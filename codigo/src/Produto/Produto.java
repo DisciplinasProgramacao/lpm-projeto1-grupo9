@@ -19,10 +19,10 @@ public class Produto {
     private int quantidadeMinima;
     private int quantidadeAtual = 0;
 
-    private String descricao; // descricao de produto
     private double Custo; // valor de compra
     private double Venda; // valor de venda
     private double Lucro; // margem de lucro
+    private String descricao; // descricao de produto
 
     public Produto(){}
     
@@ -42,14 +42,19 @@ public class Produto {
     }
 
     public double getVenda() {
+        calcValorDeVenda();
         return Venda;
     }
 
     public double getLucro() {
         return Lucro;
     }
+
+    public void setLucro(double Lucro) {
+        this.Lucro = Lucro;
+    }
     
-    public void calcValorDeVenda(){
+    private void calcValorDeVenda(){
         validaLucro();
         this.Venda = (1 + IMPOSTO) * (Custo * Lucro);
     }
@@ -72,6 +77,6 @@ public class Produto {
         } else {
             System.out.println("O estabelecimento pode funcionar normalmente");
         }
-        System.out.println("Quantidade atual:" + quantidadeAtual + "Quantidade mínima:" + quantidadeMinima);
+        System.out.println("Quantidade atual:" + quantidadeAtual + "\nQuantidade mínima:" + quantidadeMinima);
     }
 }
