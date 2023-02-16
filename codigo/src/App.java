@@ -6,19 +6,16 @@ import Relatorio.Relatorio;
 
 public class App {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception { 
+        // cadastrando produtos
+        ArrayList<Produto> produtos = new ArrayList<>();
+
+        produtos.add(new Produto(100, 1.42, 1.57, "Leite"));
+        produtos.add(new Produto(350, 0.17, 1.73, "Ovo"));
+        produtos.add(new Produto(26, 2.42, 1.36, "Macarrão"));
+        produtos.add(new Produto(18, 0.82, 1.44, "Melancia"));
 
         Relatorio mercearia = new Relatorio();
-        
-        Produto leite = new Produto(20, 1.85, 1.44, "branco");
-        Produto ovo = new Produto(100, 0.38, 1.67, "fragil");
-        Produto macarrao = new Produto(2, 3.38, 1.31, "massa");
-
-        // ArrayList<Produto> listaDeCompras = new ArrayList<>();
-
-        // listaDeCompras.add(leite);
-        // listaDeCompras.add(ovo);
-        // listaDeCompras.add(macarrao);
 
         Scanner console = new Scanner (System.in);
         int opcao = 0;
@@ -44,50 +41,21 @@ public class App {
                 break;
 
             case 2:
-                System.out.print("\nDigite a quantidade desejada: ");
-                quantidade = console.nextInt();
-                ovo.adicionaProduto(quantidade);
 
-                double valorCusto = ovo.getCusto() * quantidade;
-                mercearia.adicionarCusto(valorCusto);
                 break;
 
             case 3:
-                System.out.print("\nDigite a quantidade desejada: ");
-                quantidade = console.nextInt();
-                ovo.removeProduto(quantidade);
 
-                double valorVenda = ovo.getVenda() * quantidade;;
-                mercearia.adicionarVenda(valorVenda);
                 break;
             case 4:
-                mercearia.gerarRelatorio();
+                mercearia.geraRelatorioTotal(produtos);
                 break;
             case 5:
-                System.out.print("\nVerificando estoque de ovos: \n");
-                ovo.verificarQuantidade();
+
                 break;
             default:
                 break;
             }
         }
     }
-
-    // public void gerarCompra(Relatorio mercearia, Produto produto, int quantidade) {
-    //     produto.adicionaProduto(quantidade);
-
-    //     double valorCusto = produto.getCusto() * quantidade;
-    //     mercearia.adicionarCusto(valorCusto);
-    // }
-
-    // public void gerarVenda(Produto produto, int quantidade) {
-    //     produto.removeProduto(quantidade);
-
-    //     double valorVenda = produto.getVenda() * quantidade;
-    //     mercearia.adicionarVenda(valorVenda);
-    // }
-
-    // public void gerarRelatorio(){
-
-    // }
 }
