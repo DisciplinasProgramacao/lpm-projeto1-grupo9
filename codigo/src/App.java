@@ -75,6 +75,7 @@ public class App {
             if(p.getDescricao().toLowerCase().equals(pDescricao.toLowerCase())) {
                 p.adicionaQuantidade(pQuantidade);
                 flag = true;
+                break;
             }
         }
 
@@ -101,6 +102,7 @@ public class App {
                     System.out.println("Estoque indisponível.");
                     flag = true;
                 }
+                break;
             }
         }
 
@@ -115,6 +117,7 @@ public class App {
             if(p.getDescricao().toLowerCase().equals(produto.toLowerCase())) {
                 mercearia.verificaQuantidade(p);
                 flag = true;
+                break;
             } 
         }
         if(!flag) {
