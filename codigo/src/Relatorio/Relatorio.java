@@ -25,7 +25,7 @@ public class Relatorio {
         } else {
             System.out.println("O estabelecimento pode funcionar normalmente");
         }
-        System.out.printf("Quantidade atual: %d\nQuantidade mínima: %d", p.getQuantidadeAtual(), p.getQuantidadeMinima());
+        System.out.printf("Quantidade atual: %d\nQuantidade mínima: %d\n", p.getQuantidadeAtual(), p.getQuantidadeMinima());
     }
 
     // public void geraRelatorioProdutoUnico(Produto p) {

@@ -34,10 +34,10 @@ public class Produto {
     
     public Produto(int quantidadeMinima, double Custo, double Lucro, String descricao){
         // Cada produto vendido tem uma descrição de pelo menos 3 caracteres
-        if(descricao.length() < 3) {
-            System.out.println("Descrição curta demais");
-            System.exit(0);
-        }
+        // if(descricao.length() < 3) {
+        //     System.out.println("Descrição curta demais");
+        //     System.exit(0);
+        // }
         this.quantidadeMinima = quantidadeMinima;
         this.Custo = Custo;
         this.Lucro = Lucro;
@@ -89,10 +89,12 @@ public class Produto {
     public void adicionaQuantidade(int quantidade) {
         this.quantidadeAtual += quantidade;
         this.custoTotal += this.Custo * quantidade;
+        this.quantidadeComprada += quantidade;
     }
 
     public void removeQuantidade(int quantidade) {
         this.quantidadeAtual -= quantidade;
-        this.custoTotal += this.Venda * quantidade;
+        this.vendaTotal += this.Venda * quantidade;
+        this.quantidadeVendida += quantidade;
     }
 }
