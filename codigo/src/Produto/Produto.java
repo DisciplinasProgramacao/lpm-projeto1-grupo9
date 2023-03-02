@@ -26,23 +26,21 @@ public class Produto {
     private double vendaTotal = 0;
 
     private double Custo; // valor de compra
-    private double Venda; // valor de venda
+    private double Venda = 0; // valor de venda
     private double Lucro; // margem de lucro
     private String descricao; // descricao de produto
 
     public Produto(){}
     
-    public Produto(int quantidadeMinima, double Custo, double Lucro, String descricao){
+    public Produto(int quantidadeMinima, double Custo, double Lucro, String descricao) {
         // Cada produto vendido tem uma descrição de pelo menos 3 caracteres
-        // if(descricao.length() < 3) {
-        //     System.out.println("Descrição curta demais");
-        //     System.exit(0);
-        // }
-        this.quantidadeMinima = quantidadeMinima;
-        this.Custo = Custo;
-        this.Lucro = Lucro;
-        this.descricao = descricao;
-        calculaVenda();
+       if(validacoes(Lucro, descricao)){
+            this.quantidadeMinima = quantidadeMinima;
+            this.Custo = Custo;
+            this.Lucro = Lucro;
+            this.descricao = descricao;
+            calculaVenda();
+        }
     }
 
     public String getDescricao() {
@@ -73,17 +71,39 @@ public class Produto {
         return vendaTotal;
     }
 
+    public double getVenda() {
+        return Venda;
+    }
+
+    public double getCusto() {
+        return Custo;
+    }
+
+    public double getLucro() {
+        return Lucro;
+    }
+
+    public static double getImposto() {
+        return IMPOSTO;
+    }
+
+    public boolean validacoes(double Lucro, String descricao) {
+        return validaLucro(Lucro) && validaDescricao(descricao);
+    }
     // A margem de lucro de um produto sempre é entre 30 e 80% do valor do preço de custo.
-    private boolean validaLucro(){
-        return this.Lucro >= 1.3 && this.Lucro <= 1.8;
+    private boolean validaLucro(double Lucro){
+        return Lucro >= 1.3 && Lucro <= 1.8;
+    }
+
+    private boolean validaDescricao(String descricao) {
+        return descricao.length() >= 3;
     }
     
     //  Um  produto  tem  um  preço  de  custo  e  um  preço  de  venda.  O  preço  de  venda  é  assim 
     // calculado: preço de custo + margem de lucro + valor dos impostos => o valor dos impostos
     //  é de 18% sobre a soma do custo e da margem de lucro.
     private void calculaVenda(){
-        validaLucro();
-        this.Venda = (1 + IMPOSTO) * (Custo * Lucro);
+            this.Venda = (1 + IMPOSTO) * (Custo * Lucro);
     }
 
     public void adicionaQuantidade(int quantidade) {

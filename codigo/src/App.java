@@ -62,6 +62,7 @@ public class App {
         }
     }
 
+
     public static void geraCompra(ArrayList<Produto> produtos){
         System.out.println("Insira o produto: ");
         String pDescricao = console.nextLine();
